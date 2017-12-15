@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" http-equiv="Refresh" content="5;url={{url_for('home_page', username=username)}}">
+    <title>{{title}}</title>
+</head>
+<body style="text-align: center;">
+<div style="width:800px; margin:auto; text-align: left;">
+    <h1>
+        Register successfully. You will be redirected to Home Page in 5 seconds.
+    </h1>
+    <h1>
+        Or you can go there by clicking <a href="{{url_for('home_page', username=username)}}">here</a>
+    </h1>
+</div>
+</body>
+</html>

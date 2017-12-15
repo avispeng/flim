@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    <script type="text/javascript">
+        function checkPass(){
+            //Store the password field objects into variables ...
+            var pass1 = document.getElementById('pass1');
+            var pass2 = document.getElementById('pass2');
+            if(pass1.value == "" || pass2.value == "") return;
+            //Store the Confimation Message Object ...
+            var message = document.getElementById('confirmMessage');
+            //Set the colors we will be using ...
+            var goodColor = "#66cc66";
+            var badColor = "#ff6666";
+            //Compare the values in the password field
+            //and the confirmation field
+            if(pass1.value == pass2.value){
+                //The passwords match.
+                //Set the color to the good color and inform
+                //the user that they have entered the correct password
+                pass2.style.backgroundColor = goodColor;
+                message.style.color = goodColor;
+                message.innerHTML = "Passwords Match!";
+                document.getElementById("registerSubmit").disabled = false;
+            }else{
+                //The passwords do not match.
+                //Set the color to the bad color and
+                //notify the user.
+                pass2.style.backgroundColor = badColor;
+                message.style.color = badColor;
+                message.innerHTML = "Passwords Do Not Match!";
+                document.getElementById("registerSubmit").disabled = true;
+            }
+        }
+    </script>
+</head>
+<body>
+    <form action="{{url_for('signup_submit')}}" method="post">
+        Username:<input type="text" name="username" value="{{sign_username if sign_username != None}}" required><br>
+        Password:<input type="password" name="password" id="pass1" onkeyup="checkPass(); return false;" required><br>
+        Confirm Password:<input type="password" id="pass2" onkeyup="checkPass(); return false;" required>
+        <span id="confirmMessage"></span><br>
+        <p>{{signup_error_msg if signup_error_msg != None}}</p>
+        <input type="submit" name="signup" id="registerSubmit" value="Register">
+    </form>
+</body>
+</html>

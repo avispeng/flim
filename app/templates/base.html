@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        $(function(){
+            $(".loginButton").click(function(){
+                $(".loginBlock_bg").fadeIn(200);
+                $(".loginBlock").fadeIn(400);
+            });
+            $(".loginBlock_bg").click(function(){
+                $(".loginBlock_bg").fadeOut(400);
+                $(".loginBlock").fadeOut(400);
+            });
+        });
+    </script>
+    <style>
+        .loginBlock_bg{
+        {% if login_block == None %}
+            display:none;
+        {% endif %}
+        position:fixed;
+        width:100%;
+        height:100%;
+        background:#000;
+        z-index:2;
+        top:0;
+        left:0;
+        opacity:0.7;
+        }
+        .loginBlock{
+        {% if login_block == None %}
+            display:none;
+        {% endif %}
+        width:500px;
+        height:300px;
+        position:fixed;
+        top:50%;
+        margin-top:-150px;
+        background:#fff;
+        z-index:3;
+        left:50%;
+        margin-left:-250px;
+        }
+    </style>
+    {% block head %}
+    {% endblock %}
+</head>
+<body>
+{% if user_self == None %}
+    <div style="height: 300px;">
+        <div style="display: inline-block; float: right;">
+            <button class="loginButton">Login</button>
+        </div>
+        <div class="loginBlock_bg"></div>
+        <div class="loginBlock">
+            <form action="{{url_for('login_submit')}}" method="post">
+                Username:<input type="text" value="{{log_username if log_username != None}}" name="username" required><br>
+                Password:<input type="password" name="password" required><br>
+                <input type="checkbox" name="stay_login" value="stay" />Stay logged in<br>
+                <p id="login_error" class="errormsg">{{login_error_msg if login_error_msg != None}}</p>
+                <input type="submit" name="login" value="Login">
+            </form>
+        </div>
+        <div style="display: inline-block; float: right;">
+            <form action="{{url_for('signup_get')}}" method="get">
+                <input type="submit" name="signup" value="Signup">
+            </form>
+        </div>
+    </div>
+{% else %}
+    <div style="height:300px;">
+        <div style="display: inline-block; float: right;">
+            <form action="{{url_for('logout')}}" method="get">
+                <input type="submit" name="logout" value="Logout">
+            </form>
+        </div>
+    </div>
+{% endif %}
+{% block body %}
+{% endblock %}
+</body>
+</html>
