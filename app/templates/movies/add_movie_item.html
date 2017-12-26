@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+</head>
+<body>
+<h>Add One Movie Item</h>
+<form action="{{url_for('new_movie_item')}}" method="post" enctype="multipart/form-data">
+    Movie Title:<br>
+    <input type="text" name="movie_title" required><br><br>
+    IMDb No.:<br>
+    <input type="text" name="movie_no" required><br><br>
+    Poster:<input type="file" name="poster" value="Browse"><br><br>
+    Genres:<br>
+    <input type="checkbox" name="genre" value="drama">Drama &nbsp;&nbsp;
+    <input type="checkbox" name="genre" value="comedy">Comedy &nbsp;&nbsp;
+    <input type="checkbox" name="genre" value="action">Action &nbsp;&nbsp;
+    <input type="checkbox" name="genre" value="crime">Crime<br>
+    <input type="checkbox" name="genre" value="romance">Romance &nbsp;&nbsp;
+    <input type="checkbox" name="genre" value="lgbt">LGBT &nbsp;&nbsp;
+    <input type="checkbox" name="genre" value="scifi">Sci-Fi &nbsp;&nbsp;
+    <input type="checkbox" name="genre" value="thriller">Thriller <br>
+    <input type="checkbox" name="genre" value="mystery">Mystery &nbsp;&nbsp;
+    <input type="checkbox" name="genre" value="fantasy">Fantasy &nbsp;&nbsp;
+    <input type="checkbox" name="genre" value="animation">Animation &nbsp;&nbsp;
+    <input type="checkbox" name="genre" value="adventure">Adventure <br><br>
+    Release Date:<br>
+    <input type="date" name="release_date"><br><br>
+    Casts&Crew:<br>
+    Director(s): Use comma to separate them if there are more than one.<br>
+    <input type="text" name="directors"><br>
+    Writer(s): Use comma to separate them if there are more than one.<br>
+    <input type="text" name="writers"><br>
+    Star(s): Use comma to separate them if there are more than one.<br>
+    <input type="text" name="stars"><br><br>
+    Language(s): Use comma to separate them if there are more than one.<br>
+    <input type="text" name="languages"><br><br>
+    Country(s): Use comma to separate them if there are more than one.<br>
+    <input type="text" name="countries"><br><br>
+    Also known as: Use comma to separate them if there are more than one.<br>
+    <input type="text" name="aka"><br><br>
+    <p class="msg_display">{{msg_display if msg_display != None}}</p>
+    <input type="submit" name="add_movie" value="Submit">
+</form>
+</body>
+</html>
