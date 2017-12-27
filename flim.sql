@@ -57,6 +57,6 @@ rating_no INT NOT NULL AUTO_INCREMENT,
 movie_no INT NOT NULL,
 username CHAR(20) NOT NULL,
 rating FLOAT NULL,
-tags JSON NULL
+tags JSON NULL,
 PRIMARY KEY (rating_no)
 );
